@@ -24,21 +24,3 @@ def solve(lines: list[str]):
         path = new_path
 
     print(ans)
-
-
-def main():
-    with open("sample_input.txt") as reader:
-        sample_lines = reader.readlines()
-
-    with open("input.txt") as reader:
-        lines = reader.readlines()
-
-    print("Sample: ")
-    solve(sample_lines)
-
-    print("Actual: ")
-    solve(lines)
-
-
-if __name__ == "__main__":
-    main()

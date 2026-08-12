@@ -3,11 +3,7 @@ import string
 
 def solve(lines: list[str]):
     passwords = [line.strip() for line in lines]
-
-    print(max(
-        sum(strength(pw + c) for pw in passwords)
-        for c in string.ascii_lowercase + string.ascii_uppercase + string.digits
-    ))
+    print(passwords[max(range(len(passwords)), key=lambda i: strength(passwords[i]))])
 
 
 def strength(pw: str) -> int:
@@ -15,14 +11,8 @@ def strength(pw: str) -> int:
     upper = any(c in string.ascii_uppercase for c in pw)
     digit = any(c in string.digits for c in pw)
 
-    score = lower + upper + digit + longest_consecutive_subsequence(pw) ** 2
-    
-    if '7' in pw and all(digit not in pw for digit in '012345689'):
-        score += 7
+    score = lower + upper + digit
 
-    if any(s in pw for s in ('blue', 'red', 'green')):
-        score *= 3
-    
     return score * len(pw)
 
 
@@ -43,21 +33,3 @@ def longest_consecutive_subsequence(pw: str) -> int:
 
     if max_len >= 3: return max_len
     else: return 0
-
-
-def main():
-    with open("sample_input.txt") as reader:
-        sample_lines = reader.readlines()
-
-    with open("input.txt") as reader:
-        lines = reader.readlines()
-
-    print("Sample: ")
-    solve(sample_lines)
-
-    print("Actual: ")
-    solve(lines)
-
-
-if __name__ == "__main__":
-    main()

@@ -38,21 +38,3 @@ def longest_consecutive_subsequence(pw: str) -> int:
 
     if max_len >= 3: return max_len
     else: return 0
-
-
-def main():
-    with open("sample_input.txt") as reader:
-        sample_lines = reader.readlines()
-
-    with open("input.txt") as reader:
-        lines = reader.readlines()
-
-    print("Sample: ")
-    solve(sample_lines)
-
-    print("Actual: ")
-    solve(lines)
-
-
-if __name__ == "__main__":
-    main()

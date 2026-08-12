@@ -20,14 +20,3 @@ def solve(lines: list[str]):
     max_ = max(segments)
     max_i = next(i for i in range(100) if segments[i] == max_)
     print((max_i+1) * max_)
-
-
-def main():
-    with open("input.txt") as reader:
-        lines = reader.readlines()
-
-    solve(lines)
-
-
-if __name__ == "__main__":
-    main()
