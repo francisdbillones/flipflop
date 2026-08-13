@@ -2,7 +2,7 @@ def solve(lines: list[str]):
     line, *_ = lines
     line = line.strip()
 
-    cursor_a, cursor_b = 0, 0 
+    cursor_a, cursor_b = 0, 0
     ans = 0
 
     for ch1, ch2 in zip(line, reversed(line)):
@@ -16,7 +16,7 @@ def solve(lines: list[str]):
 
 
 def apply(cursor, ch):
-    if ch == '<':
+    if ch == "<":
         cursor -= 1
     else:
         cursor += 1

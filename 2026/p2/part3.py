@@ -13,16 +13,14 @@ def solve(lines: list[str]):
             cursor = apply(cursor, ch)
         segments[cursor] += 1
 
-
     max_ = max(segments)
     max_i = next(i for i in range(100) if segments[i] == max_)
 
     print((max_i + 1) * max_)
 
 
-
 def apply(cursor, ch):
-    if ch == '<':
+    if ch == "<":
         cursor -= 1
     else:
         cursor += 1

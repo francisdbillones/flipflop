@@ -1,7 +1,6 @@
 #!/usr/bin/env python3
 import argparse
 import importlib.util
-import sys
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent
@@ -18,13 +17,16 @@ def load_solve(problem: str, part: int):
         raise FileNotFoundError(f"no such file: {module_path}")
 
     spec = importlib.util.spec_from_file_location(f"{problem}_part{part}", module_path)
+    assert spec is not None and spec.loader is not None
     module = importlib.util.module_from_spec(spec)
     spec.loader.exec_module(module)
     return module.solve
 
 
 def main():
-    parser = argparse.ArgumentParser(description="Run a solve() for a given problem/part/input.")
+    parser = argparse.ArgumentParser(
+        description="Run a solve() for a given problem/part/input."
+    )
     parser.add_argument("problem", help='problem name, e.g. "p1", "p4"')
     parser.add_argument(
         "part",
@@ -45,7 +47,8 @@ def main():
         parts = (args.part,)
     else:
         parts = tuple(
-            part for part in (1, 2, 3)
+            part
+            for part in (1, 2, 3)
             if (ROOT / args.problem / f"part{part}.py").exists()
         )
 
@@ -53,7 +56,8 @@ def main():
         input_types = (args.input_type,)
     else:
         input_types = tuple(
-            input_type for input_type in ("sample", "real")
+            input_type
+            for input_type in ("sample", "real")
             if (ROOT / args.problem / INPUT_FILENAMES[input_type]).exists()
         )
         if not input_types:

@@ -18,10 +18,10 @@ def strength(pw: str) -> int:
 
 def longest_consecutive_subsequence(pw: str) -> int:
     if len(pw) == 1:
-        return 0 
+        return 0
 
     max_len = 0
-    current_seq = 1 
+    current_seq = 1
 
     for i, c in zip(range(1, len(pw)), pw[1:]):
         if pw[i - 1] == c:
@@ -31,5 +31,7 @@ def longest_consecutive_subsequence(pw: str) -> int:
             current_seq = 1
     max_len = max(max_len, current_seq)
 
-    if max_len >= 3: return max_len
-    else: return 0
+    if max_len >= 3:
+        return max_len
+    else:
+        return 0

@@ -1,17 +1,11 @@
-import string
-
-
 def solve(lines: list[str]):
-    cut = lines[3:-2]
-    ans = 0
-
-    leaves = [line for line in lines if 'o-|' in line or '|-o' in line] 
+    leaves = [line for line in lines if "o-|" in line or "|-o" in line]
     path = leaves[::-1]
 
     ans = 0
     while True:
         new_path = []
-        for leaf in path: 
+        for leaf in path:
             if not new_path or leaf == new_path[-1]:
                 new_path.append(leaf)
             else:

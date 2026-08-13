@@ -4,10 +4,10 @@ def solve(lines: list[str]):
     visited = [[False for _ in range(len(grid[0]))] for _ in range(len(grid))]
 
     deltas = {
-            '>': (0, 1),
-            '<': (0, -1),
-            '^': (-1, 0),
-            'v': (1, 0),
+        ">": (0, 1),
+        "<": (0, -1),
+        "^": (-1, 0),
+        "v": (1, 0),
     }
 
     i, j = 0, 0

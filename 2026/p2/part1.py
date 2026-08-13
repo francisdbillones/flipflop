@@ -5,7 +5,7 @@ def solve(lines: list[str]):
     cursor = 0
 
     for ch in line:
-        if ch == '<':
+        if ch == "<":
             cursor -= 1
         else:
             cursor += 1
@@ -19,4 +19,4 @@ def solve(lines: list[str]):
 
     max_ = max(segments)
     max_i = next(i for i in range(100) if segments[i] == max_)
-    print((max_i+1) * max_)
+    print((max_i + 1) * max_)

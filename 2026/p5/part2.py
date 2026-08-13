@@ -1,14 +1,9 @@
 def solve(lines: list[str]):
     grid = [list(line.strip()) for line in lines]
 
-    best = distinct_streets(grid) 
+    best = distinct_streets(grid)
 
-    other = {
-            '>': '^<v',
-            '<': '^>v',
-            '^': '><v',
-            'v': '><^'
-    }
+    other = {">": "^<v", "<": "^>v", "^": "><v", "v": "><^"}
 
     for i in range(1, len(grid) - 1):
         for j in range(1, len(grid[0]) - 1):
@@ -21,14 +16,14 @@ def solve(lines: list[str]):
     print(best)
 
 
-def distinct_streets(grid: list[str]):
+def distinct_streets(grid: list[list[str]]):
     visited = [[False for _ in range(len(grid[0]))] for _ in range(len(grid))]
 
     deltas = {
-            '>': (0, 1),
-            '<': (0, -1),
-            '^': (-1, 0),
-            'v': (1, 0),
+        ">": (0, 1),
+        "<": (0, -1),
+        "^": (-1, 0),
+        "v": (1, 0),
     }
 
     i, j = 0, 0
