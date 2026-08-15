@@ -3,6 +3,8 @@ import argparse
 import importlib.util
 from pathlib import Path
 
+from di import kwargs_for
+
 ROOT = Path(__file__).resolve().parent
 
 INPUT_FILENAMES = {
@@ -73,7 +75,7 @@ def main():
                 lines = reader.readlines()
 
             print(f"part {part} / {input_type}:")
-            solve(lines)
+            solve(lines, **kwargs_for(solve, input_type))
 
 
 if __name__ == "__main__":
