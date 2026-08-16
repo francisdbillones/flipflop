@@ -10,12 +10,8 @@ def solve(lines: list[str]):
     for line in lines:
         first, second, *babies = line.split()
 
-        rules[(first, second)] = [
-            pair for pair in it.pairwise((first, *babies, second))
-        ]
-        rules[(second, first)] = [
-            pair for pair in it.pairwise((second, *babies, first))
-        ]
+        rules[(first, second)] = tuple(it.pairwise((first, *babies, second)))
+        rules[(second, first)] = tuple(it.pairwise((second, *babies, first)))
 
     pair_counts = defaultdict(lambda: 0)
     pair_counts[("A", "B")] = 1
